@@ -20,9 +20,9 @@ jobs:
         with:
           submodules: recursive
 
-      # Set up Docker Buildx for cloud-native layer caching
+      # Corrected: Set up Docker Buildx for cloud-native layer caching
       - name: Set up Docker Buildx
-        uses: actions/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v3
 
       # Authenticate directly into the GitHub Container Registry
       - name: Log in to GitHub Container Registry
