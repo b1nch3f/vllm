@@ -4,6 +4,10 @@ on:
   push:
     branches: [ custom-engine ]
 
+permissions:
+  packages: write
+  contents: read
+
 jobs:
   build:
     runs-on: self-hosted
