@@ -1,0 +1,21 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches: [ custom-engine ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Build and push Docker image
+        run: |
+          docker buildx bake -f docker/docker-bake.hcl \
+            --set "*.tags=ghcr.io/b1nch3f/vllm-custom:latest" \
+            --set "*.push=true" \
+            --set "*.args.torch_cuda_arch_list=8.9" \
+            openai
