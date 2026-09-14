@@ -20,7 +20,7 @@ jobs:
         with:
           submodules: recursive
 
-      # Corrected: Set up Docker Buildx for cloud-native layer caching
+      # Set up Docker Buildx for cloud-native layer caching
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -44,4 +44,4 @@ jobs:
           cache-from: type=gha # Leverages GitHub Actions built-in cloud network caching
           cache-to: type=gha,mode=max
           build-args: |
-            torch_cuda_arch_list=8.0 8.9 9.0
+            torch_cuda_arch_list=8.9
