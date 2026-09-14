@@ -14,7 +14,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker buildx bake -f docker/docker-bake.hcl \
+          sudo docker buildx bake -f docker/docker-bake.hcl \
             --set "*.tags=ghcr.io/b1nch3f/vllm-custom:latest" \
             --set "*.push=true" \
             --set "*.args.torch_cuda_arch_list=8.9" \
