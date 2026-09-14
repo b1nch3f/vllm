@@ -4,10 +4,6 @@ on:
   push:
     branches: [ custom-engine ]
 
-permissions:
-  packages: write
-  contents: read
-
 jobs:
   build:
     runs-on: self-hosted
@@ -18,7 +14,7 @@ jobs:
 
       - name: Login to GHCR
         run: |
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u b1nch3f --password-stdin
+          echo "${{ secrets.GHCR_TOKEN }}" | sudo docker login ghcr.io -u b1nch3f --password-stdin
 
       - name: Build and push Docker image
         run: |
@@ -27,3 +23,4 @@ jobs:
             --set "*.push=true" \
             --set "*.args.torch_cuda_arch_list=8.9" \
             openai
+
